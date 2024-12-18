@@ -57,7 +57,7 @@ determining executable automatically.  Try using the "file" command.
 
 Le choix du désassembleur est un choix plus religieux que technique (meme si j'admet volontier que Cutter a ses defauts, que voulez-vous, le désassembleur choisis son sorcier). Parmis les defauts précédemment evoqués, il y a notamment le fait que cutter ne reconnaisse pas automatiquement la nature du binaire ainsi que la tailles des opcodes lorsqu'il s'agit de thumb2.
 
-![cutter_conf](https://github.com/lamashnikov/lamashnikov.github.io/blob/78cef7b57197ecb4a207100c987585428741ab77/img/cutter_conf.png)
+![cutter_conf](https://github.com/lamashnikov/lamashnikov.github.io/blob/78cef7b57197ecb4a207100c987585428741ab77/img/cutter_conf.png){:.ioda}
 
  Il faut donc penser a le configurer dans les options avancées au moment du chargement du binaire pour éviter toutes déconvenues. Il faut aussi penser a changer la base addresse. Le firmware vivant en flash, il faut penser a le mapper en 0x10000000 comme indiqué dans la [datasheet] [dsh-link] 
 
