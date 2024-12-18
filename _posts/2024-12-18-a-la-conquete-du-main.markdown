@@ -72,6 +72,14 @@ Reprenons notre [datasheet] [dsh-link] et interessons nous a la section 2.7, la 
 3. Le code utilisateur se situant en flash et cette dernière se trouvant derrière un lien QSPI, le CPU va configurer les pins du controlleur QSPI et le controlleur lui même dans "un etat par defaut, pas optimal mais relativement universel". Cela lui permettant de recuperer les 256 premiers octets de manière peu rapide, mais de manière a prendre en charge le plus de puce de flash QSPI possible.
 4. Le bootrom saute dans ces 256 premiers octets a l'octet 0 de la flash (donc a l'addresse 0x10000000) et commence a executer le code dans ce qui peut-etre considéré comme le deuxieme etage d'une fusée (the second stage bootloader).  
 
+### Le deuxieme etage du bootloader
+
+Le deuxieme etage du bootloader varie d'une board a l'autre, et n'est plus propre au micro-controlleur lui-même. Son rôle va etre de configurer le controlleur QSPI de manière plus personnalisée vis a vis de la puce de flash utilisé par la devboard. Ce faisant, il existe différents second stage bootloader, selon la puce qui aura été adjointe par la personne aillant désigné la board. Le second stage bootloader va alors ensuite configurer le hardware chargé de mettre en cache les données recues de la flash pour permettre au RP2040 de les utiliser sans avoir a les stocker en RAM d'abord. Ce hardware porte un nom: le XIP pour "eXecute In Place". A partir de là, c'est toute la flash qui est adressable et non plus ses 256 premiers octets. Il est donc possible d'atteindre les addresses au dela de 0x10000100. Et cela tombe bien ce les données a partir de cette addresse qui nous interesse pour cette fin de second stage bootloader. 
+
+
+### L'arm VTOR
+
+
 
 
 [dsh-link]: https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf#%5B%7B%22num%22%3A131%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C115%2C478.854%2Cnull%5D
