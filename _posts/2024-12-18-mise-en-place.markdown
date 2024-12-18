@@ -18,7 +18,7 @@ Le RPI pico est un soc ARM cortex-M0+, comme toute puce cortex M cette derniere 
 
 - L'analyse statique a ses limites, et cela va permettre de d'analyser dynamiquement notre binaire  
 
-A cette fin de nombreuses sonde SWD existent, la plupart etant compatible avec openOCD, un outil open source (c'est comme le porc salut) permettant de lancer un serveur GDB controllant notre MPU via le lien SWD. Après quelques recherches, une sonde a particulierement attirée mon attention pour deux raisons: la [Black magic debug probe] [bm-link]
+A cette fin de nombreuses sonde SWD existent, la plupart etant compatible avec openOCD, un outil open source permettant de lancer un serveur GDB controllant notre MPU via le lien SWD. Après quelques recherches, une sonde a particulierement attirée mon attention pour deux raisons: la [Black magic debug probe] [bm-link]
 - La premiere raison etant qu'elle semble compatible avec un maximum de micro-controlleur possedant un lien SWD (la ou un ST Link par exemple ne sera compatible qu'avec un MCU ST). 
 - La deuxieme raison est le fait que son firwmare ai été décliné sur plusieurs hardware dont une devboard dont mes tiroirs débordent: les [black pills avec leurs MCU STM32F4][bp-link] disponibles pour quelque euros sur aliexpress.    
 
