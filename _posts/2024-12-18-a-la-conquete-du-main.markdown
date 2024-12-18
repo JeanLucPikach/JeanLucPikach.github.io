@@ -74,7 +74,7 @@ Reprenons notre [datasheet] [dsh-link] et interessons nous a la section 2.7, la 
 
 ### Le deuxieme etage du bootloader
 
-Le deuxieme etage du bootloader varie d'une board a l'autre, et n'est plus propre au micro-controlleur lui-même. Son rôle va etre de configurer le controlleur QSPI de manière plus personnalisée vis a vis de la puce de flash utilisé par la devboard. Ce faisant, il existe différents second stage bootloader, selon la puce qui aura été adjointe par la personne aillant désigné la board. Le second stage bootloader va alors ensuite configurer le hardware chargé de mettre en cache les données recues de la flash pour permettre au RP2040 de les utiliser sans avoir a les stocker en RAM d'abord. Ce hardware porte un nom: le XIP pour "eXecute In Place". A partir de là, c'est toute la flash qui est adressable et non plus ses 256 premiers octets. Il est donc possible d'atteindre les addresses au dela de 0x10000100. Et cela tombe bien ce les données a partir de cette addresse qui nous interesse pour cette fin de second stage bootloader. 
+Le deuxieme etage du bootloader varie d'une board a l'autre, et n'est plus propre au micro-controlleur lui-même. Son rôle va etre de configurer le controlleur QSPI de manière plus personnalisée vis a vis de la puce de flash utilisé par la devboard. Ce faisant, il existe [différents second stage bootloader] [boot2-link], selon la puce qui aura été adjointe par la personne aillant désigné la board. Le second stage bootloader va alors ensuite configurer le hardware chargé de mettre en cache les données recues de la flash pour permettre au RP2040 de les utiliser sans avoir a les stocker en RAM d'abord. Ce hardware porte un nom: le XIP pour "eXecute In Place". A partir de là, c'est toute la flash qui est adressable et non plus ses 256 premiers octets. Il est donc possible d'atteindre les addresses au dela de 0x10000100. Et cela tombe bien ce les données a partir de cette addresse qui nous interesse pour cette fin de second stage bootloader. 
 
 
 ### L'arm VTOR
@@ -110,3 +110,4 @@ Vous aimez la [préfiguration] [fore-link] ? Moi personnellement j'aime beaucoup
 
 [dsh-link]: https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf#%5B%7B%22num%22%3A131%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C115%2C478.854%2Cnull%5D
 [fore-link]: https://fr.wikipedia.org/wiki/Foreshadowing
+[boot2-link]: https://github.com/raspberrypi/pico-sdk/tree/master/src/rp2040/boot_stage2
