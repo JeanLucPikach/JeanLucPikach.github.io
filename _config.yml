@@ -28,7 +28,7 @@ twitter_username: néant
 github_username:  néant
 
 # Build settings
-theme: no-style-please
+remote_theme: riggraz/no-style-please
 
 theme_config:
     appearance: "dark" # can be "light", "dark" or "auto"
