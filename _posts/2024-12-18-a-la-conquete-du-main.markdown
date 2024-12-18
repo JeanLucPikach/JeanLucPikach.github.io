@@ -79,7 +79,34 @@ Le deuxieme etage du bootloader varie d'une board a l'autre, et n'est plus propr
 
 ### L'arm VTOR
 
+Vous aimez la [préfiguration] [fore-link] ? Moi personnellement j'aime beaucoup. Il se trouve que le second bloc de code présenté dans ce billet, n'avait pas de sens car ce n'etait précisement pas du code mais de la donnée. La voici lorsque l'on dit a Cutter de ne pas chercher a la désassembler: 
+
+
+```
+0x10000100      .dword 0x20040000
+0x10000104      .dword 0x100001e3
+0x10000108      .dword 0x100001c3
+0x1000010c      .dword 0x100003e9
+0x10000110      .dword 0x100001c1
+0x10000114      .dword 0x100001c1
+0x10000118      .dword 0x100001c1
+0x1000011c      .dword 0x100001c1
+0x10000120      .dword 0x100001c1
+0x10000124      .dword 0x100001c1
+0x10000128      .dword 0x100001c1
+0x1000012c      .dword 0x10000345
+0x10000130      .dword 0x100001c1
+0x10000134      .dword 0x100001c1
+0x10000138      .dword 0x100003c9
+0x1000013c      .dword 0x100003d5
+0x10000140      .dword 0x100001cd
+0x10000144      .dword 0x100001cd
+0x10000148      .dword 0x100001cd
+0x1000014c      .dword 0x100001cd
+0x10000150      .dword 0x100001cd
+```
 
 
 
 [dsh-link]: https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf#%5B%7B%22num%22%3A131%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C115%2C478.854%2Cnull%5D
+[fore-link]: https://fr.wikipedia.org/wiki/Foreshadowing
