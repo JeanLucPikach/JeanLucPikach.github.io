@@ -53,9 +53,12 @@ determining executable automatically.  Try using the "file" command.
 
 > *hacker voice*: i'm in
 
+### Configuration de cutter
 
+Le choix du désassembleur est un choix plus religieux que technique (meme si j'admet volontier que Cutter a ses defauts, que voulez-vous, le désassembleur choisis son sorcier). Parmis les defauts précédemment evoqués, il y a notamment le fait que cutter ne reconnaisse pas automatiquement la nature du binaire ainsi que la tailles des opcodes lorsqu'il s'agit de thumb2. Il faut donc penser a le configurer dans les options avancées au moment du chargement du binaire pour éviter toutes déconvenues. Il faut aussi penser a changer la base addresse. Le firmware vivant en flash, il faut penser a le mapper en 0x10000000 comme indiqué dans la datasheet [dsh-link] 
 
 
 [bm-link]: https://www.black-magic.org/
 [bp-link]: https://stm32-base.org/boards/STM32F411CEU6-WeAct-Black-Pill-V2.0.html
 [rdbpbm-link]: https://github.com/koendv/blackmagic-firmware/blob/master/INSTALL.md
+[dsh-link]: https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf#%5B%7B%22num%22%3A27%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C115%2C675.352%2Cnull%5D
