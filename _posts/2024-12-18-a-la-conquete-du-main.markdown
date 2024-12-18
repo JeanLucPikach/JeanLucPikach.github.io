@@ -6,12 +6,12 @@ categories: RP2040 Dessassemblage
 ---
 
 
-Ce billet est le second d'une suite d'articles concernant le dessassemblage d'un firmware tournant sur RP2040. Maintenant bien équipé, nous allons commencer notre descente dans les entraille du raspberry pico en cherchant des points d'entrées.
+Ce billet est le second d'une suite d'articles concernant le dessassemblage d'un firmware tournant sur RP2040. Maintenant bien équipé, nous allons commencer notre descente dans les entraillse du raspberry pico a la recherche de points d'entrées.
 
 ### Par ou commencer? 
 
 
-Maintenant que nous avons reussi a ouvrir notre firmware dans cutter, il faut désormais comprendre ou regarder. En effet, si un survol rapide nous fait appercevoir des endroits qui semblent effectivement correspondre a du code et des fonctions bien délimitées, d'autres endroits sont plus... cryptique. 
+Maintenant que nous avons reussi a ouvrir notre firmware dans cutter, il faut désormais comprendre ou regarder. En effet, si un survol rapide nous fait appercevoir des endroits qui semblent effectivement correspondre a du code et des fonctions bien délimitées, d'autres endroits sont plus... cryptiques. 
 
 
 ```
@@ -59,3 +59,19 @@ Maintenant que nous avons reussi a ouvrir notre firmware dans cutter, il faut d�
 0x10000146      asrs    r0, r0, 0x20
 ```
 > Mais qu'est-ce que je regarde???
+
+
+### Un peu de lecture 
+
+Reprenons notre [datasheet] [dsh-link] et interessons nous a la section 2.7, la boot sequence. Cette dernière nous apprends que lorsque le RP2040 sort de reset, celui-ci va effectuer la sequence suivante: 
+
+1. Tout d'abord, un moment de flottement va être observé, de maniere a laisser les clocks se stabiliser. Cela ne nous sert a rien, mais cela valait la peine d'etre mentionné.
+2. Ensuite, le code situé en ROM, une section de mémoire en lecture seule et flashé en usine va être executé
+	- Si nous sommes sur le core 1, alors nous nous endormons, pas de multithreading tout de suite: 
+	- Si nous sommes sur le core 0, alors nous pouvons continuer
+3. Le code utilisateur se situant en flash et cette dernière se trouvant derrière un lien QSPI, le CPU va configurer les pins du controlleur QSPI et le controlleur lui même dans "un etat par defaut, pas optimal mais relativement universel". Cela lui permettant de recuperer les 256 premiers octets de manière peu rapide, mais a peut-pres universel (Donc de manière a prendre en charge le plus de puce de flash QSPI possible).
+4. Le bootrom saute dans ces 256 premiers octets a l'octet 0 et commence a executer le code dans ce qui peut-etre considéré comme le deuxieme etage d'une fusée (the second stage bootloader).  
+
+
+
+[dsh-link]: https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf#%5B%7B%22num%22%3A131%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C115%2C478.854%2Cnull%5D
