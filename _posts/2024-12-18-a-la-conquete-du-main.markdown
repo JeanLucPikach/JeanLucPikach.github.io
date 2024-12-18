@@ -69,7 +69,7 @@ Reprenons notre [datasheet] [dsh-link] et interessons nous a la section 2.7, la 
 2. Ensuite, le code situé en ROM, une section de mémoire en lecture seule et flashé en usine va être executé
 	- Si nous sommes sur le core 1, alors nous nous endormons, pas de multithreading tout de suite: 
 	- Si nous sommes sur le core 0, alors nous pouvons continuer
-3. Le code utilisateur se situant en flash et cette dernière se trouvant derrière un lien QSPI, le CPU va configurer les pins du controlleur QSPI et le controlleur lui même dans "un etat par defaut, pas optimal mais relativement universel". Cela lui permettant de recuperer les 256 premiers octets de manière peu rapide, mais a peut-pres universel (Donc de manière a prendre en charge le plus de puce de flash QSPI possible).
+3. Le code utilisateur se situant en flash et cette dernière se trouvant derrière un lien QSPI, le CPU va configurer les pins du controlleur QSPI et le controlleur lui même dans "un etat par defaut, pas optimal mais relativement universel". Cela lui permettant de recuperer les 256 premiers octets de manière peu rapide, mais de manière a prendre en charge le plus de puce de flash QSPI possible.
 4. Le bootrom saute dans ces 256 premiers octets a l'octet 0 et commence a executer le code dans ce qui peut-etre considéré comme le deuxieme etage d'une fusée (the second stage bootloader).  
 
 
