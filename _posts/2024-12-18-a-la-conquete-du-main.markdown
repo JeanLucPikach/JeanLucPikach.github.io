@@ -108,12 +108,12 @@ Il s'agit de la vector table, un tableau d'entiers (non signés) sur 32bits corr
 
 
 ```
-0x1000009c      ldr     r0, 0x10000100
-0x1000009e      ldr     r1, 0xe000ed08
-0x100000a0      str     r0, [r1]
-0x100000a2      ldm     r0, {r0, r1} 
-0x100000a4      msr     msp, r0
-0x100000a8      bx      r1
+0x1000009c    ldr   r0, 0x10000100
+0x1000009e    ldr   r1, 0xe000ed08
+0x100000a0    str   r0, [r1]
+0x100000a2    ldm   r0, {r0, r1} 
+0x100000a4    msr   msp, r0
+0x100000a8    bx    r1
 
 
 ```
