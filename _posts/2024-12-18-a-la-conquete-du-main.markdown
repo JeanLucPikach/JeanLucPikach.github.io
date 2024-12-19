@@ -82,8 +82,8 @@ Vous aimez la [préfiguration] [fore-link]? Il se trouve que le second bloc de c
 
 
 ```
-0x10000100  .dword 0x20040000
-0x10000104  .dword 0x100001e3
+0x10000100  .dword 0x20040000 ; stack base
+0x10000104  .dword 0x100001e3 ; reset vector
 0x10000108  .dword 0x100001c3
 0x1000010c  .dword 0x100003e9
 0x10000110  .dword 0x100001c1
