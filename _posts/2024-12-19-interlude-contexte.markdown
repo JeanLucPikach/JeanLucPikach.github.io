@@ -21,7 +21,7 @@ Le bytebeat est une methode de generation de musique procédurale. Pour ce faire
 Au cours de mes recherches, je suis tombé sur un [synthétiseur amateur] [fluorine-link]. Malheureusement, les informations concernant son fonctionnement sont rares, et je ne peux m'assurer de l'inter-opérabilité de ce synthétiseur avec le reste de mon setup. Je ne sais meme pas quels sont les formules utilisés lors de la génération de musique ni leurs taux d'echantillonages.   
 
 
-Le prix du dit synthétiseur ainsi que sa [documentation][fluorine-doc] qui ne regorge pas d'information un peu plus techniques sur son fonctionnement ne m'encourage pas a prendre un risque a 150 euros. En revanche, le fait que son firmware soit accessible sur le même dépot [git][fluorine-git] que sa documentation me rends joueur. Il est donc temps de jeter un oeuil de manière un peu plus approfondie avant de proceder a l'achat. 
+Le prix du dit synthétiseur ainsi que sa [documentation][fluorine-doc] qui ne regorge pas d'information un peu plus techniques sur son fonctionnement ne m'encourage pas a prendre un risque a 150 euros. En revanche, le fait que son firmware soit accessible sur le même dépot [git][fluorine-git] que sa documentation me rends curieux. Il est donc temps de jeter un oeuil de manière un peu plus approfondie avant de proceder a l'achat. 
 
 
 [inspecteur-link]: https://www.youtube.com/watch?v=UFqZQJAg1IQ
