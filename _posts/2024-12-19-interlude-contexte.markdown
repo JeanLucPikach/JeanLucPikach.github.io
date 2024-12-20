@@ -18,7 +18,7 @@ Le bytebeat est une methode de generation de musique procédurale. Pour ce faire
 > [Bonjour, inspecteur Disiz !  Vous avez les papiers de la boîte à rythmes s'il vous plaît? Elle est en règle?] [inspecteur-link]
 
 
-Au cours de mes recherches, je suis tombé sur un synthétiseur amateur nommé [Fluorine] [fluorine-link]. Malheureusement, la personne qui le commercialise n'est pas très avare en informations, et je ne peut m'assurer de l'inter-opérabilité de ce synthétiseur avec le reste de mon setup. Je ne sais meme pas quels sont les formules utilisés lors de la génération de musique, leurs taux d'echantillonage... rien.  
+Au cours de mes recherches, je suis tombé sur un synthétiseur amateur nommé [Fluorine] [fluorine-link]. Malheureusement, la personne qui le commercialise n'est pas très avare en informations, et je ne peut m'assurer de l'inter-opérabilité de ce synthétiseur avec le reste de mon setup. Je ne sais meme pas quels sont les formules utilisés lors de la génération de musique, leurs taux d'echantillonage... rien. Tout ce que je peux voir c'est un pico, 8 potards, et des démo sonores dont je ne sais meme pas comment elles ont été réalisées.   
 
 > Another bit that it adds to the classic bytebeat synthesis is the addition of modular and stackable algorithms that process the mathematics under the hood and a recursive Mode that cycles between this algorithms and that turns it all into a new whole synthesis technique, now called "Recursive HD Bytebeats", that altogeher with the stereo modes and Bitdepth features turns this machine, the Fluorine, in probably most advanced way to explore Bytebeat synthesis as in november of 2023.
 
