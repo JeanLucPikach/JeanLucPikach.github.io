@@ -12,7 +12,7 @@ Ce billet est le troisieme d'une suite d'articles concernant le dessassemblage d
 
 ### Fluorine
 
-[Bonjour, inspecteur Disiz !  Vous avez les papiers de la boîte à rythmes s'il vous plaît? Elle est en règle?] [inspecteur-link]
+> [Bonjour, inspecteur Disiz !  Vous avez les papiers de la boîte à rythmes s'il vous plaît? Elle est en règle?] [inspecteur-link]
 
 
 
