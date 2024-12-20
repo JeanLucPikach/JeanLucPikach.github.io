@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Retro ingenieurie d'un firmware RP2040: un peu de contexte en guise d'interlude"
-date:   2024-12-17
+date:   2024-12-19
 categories: RP2040 Dessassemblage
 ---
 
