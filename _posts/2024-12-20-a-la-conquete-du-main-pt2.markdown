@@ -10,7 +10,7 @@ Ce billet est le troisieme d'une suite d'articles concernant le dessassemblage d
 
 ### Le reset vector
 
-Bien, maintenant que nous avons compris par ou prendre tout cette assembleur et réalisé que tout code n'est pas bon a lire, il est temps de tirer sur le fil. Sautons donc a l'addresse 0x100001e3 pour commencer a lire de l'assembleur (il etait temps!) 
+Bien, maintenant que nous avons compris par ou prendre tout cet assembleur et réalisé que tout code n'est pas bon a lire, il est temps de tirer sur le fil. Sautons donc a l'addresse 0x100001e3 pour commencer a lire de l'assembleur (il etait temps!) 
 
 > NB: certains procos ARM peuvent lire des opcodes en 16 bits ou en 32 bits... Pour savoir a quoi s'attendre, le dernier bit est set a 1 si le code a cette addresse est en 16 bit (comme dans notre cas)  ou 0 en 32 bits. Si une addresse est impaire, il faut donc retrancher 1
 
