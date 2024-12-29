@@ -34,8 +34,8 @@ Bien, maintenant que nous avons compris par ou prendre tout cet assembleur et r√
 0x10000204  bne   0x10000200
 0x10000206  ldr   r1, [aav.aav.0x100002cd] ; 0x100002cd
 0x10000208  blx   r1
-0x1000020a  ldr   r1, [aav.aav.0x1000d3c5] ; 0x1000026c 
 // selon gdb nous n'arrivons jamais ici. 
+0x1000020a  ldr   r1, [aav.aav.0x1000d3c5] ; 0x1000026c 
 0x1000020c  blx   r1
 0x1000020e  bkpt  0
 ``` 
