@@ -89,7 +89,7 @@ fcn.100002cc(int32_t arg_344h);
 0x100002e4  ldr   r0, [0x10000334]
 0x100002e6  ldr   r2, [0x10000338]
 0x100002e8  subs  r2, r2, r0
-0x100002ea  bl    fcn.10011918 ; fcn.10011918
+0x100002ea  bl    fcn.10011918 ; memset
 0x100002ee  ldr   r3, [0x1000032c]
 0x100002f0  cmp   r3, 0
 0x100002f2  beq   0x100002f6
@@ -106,11 +106,12 @@ fcn.100002cc(int32_t arg_344h);
 0x10000308  cmp   r0, 0
 0x1000030a  beq   0x10000312
 0x1000030c  ldr   r0, [0x10000340]
-0x1000030e  bl    fcn.1000d3ca ; fcn.1000d3ca
+0x1000030e  bl    fcn.1000d3ca ; se contente de retourner 1
 0x10000312  bl    fcn.1001101c ; fcn.1001101c
+//selon GDB nous n'arriveront pas ici non plus
 0x10000316  movs  r0, r4
 0x10000318  movs  r1, r5
-0x1000031a  bl    fcn.10009770 ; fcn.10009770
+0x1000031a  bl    fcn.10009770 ; main loop :)
 0x1000031e  bl    fcn.1000d3c4 ; fcn.1000d3c4
 0x10000322  mov   r8, r8
 0x10000324  .dword 0x00080000
@@ -123,3 +124,7 @@ fcn.100002cc(int32_t arg_344h);
 0x1000033e  .dword 0x00001000
 0x10000340  .dword 0x00000000
 ```
+
+Nous voici donc arrivé dans la dernière fonction qui sera appelé par le reset vector, nous ne retournerons pas de cette dernière non plus. Nous pourrions être tenté de penser que c'est parceque la boucle infinie de l'utilisateur se touve a la fin lors de l'appel de la fonction `fcn.10009770`, mais il y a un twist. 
+
+Commencons par lire notre code de manière sequentielle. La première des choses faite est l'initialisation de la stack et du frame pointer. Puis nous appellons la fonction `fcn.10011918` qui est en fait un memset qui initalise une partie de la mémoire a 0. Nous allons ensuite charger un pointeur sur fonction et verifier si il n'est pas nul. Si il l'est nous passons a la suite, si il est non nul nous appelons la fonction. 
