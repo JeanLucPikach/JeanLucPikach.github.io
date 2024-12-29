@@ -32,7 +32,7 @@ Bien, maintenant que nous avons compris par ou prendre tout cet assembleur et r√
 0x10000200  stm   r1!, {r0}
 0x10000202  cmp   r1, r2
 0x10000204  bne   0x10000200
-0x10000206  ldr   r1, [aav.aav.0x100002cd] ; 0x10000268
+0x10000206  ldr   r1, [aav.aav.0x100002cd] ; 0x100002cd
 0x10000208  blx   r1
 0x1000020a  ldr   r1, [aav.aav.0x1000d3c5] ; 0x1000026c 
 // selon gdb nous n'arrivons jamais ici. 
