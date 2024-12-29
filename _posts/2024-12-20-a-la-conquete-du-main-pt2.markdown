@@ -56,6 +56,15 @@ La suite du code correspond a la copie des sections data, scratch_x, et scratch_
 0x1000023c  .dword 0x20041000
 0x10000240  .dword 0x00000000
 ```
+
 Les trois premiers elements du tableau sont chargés dans les registres r1, r2, r3. Le registre r1 correstion a l'adresse de debut de la section en flash (la source), le registre r2 correspond a la destination, la taille de la section a copier correspond a la différence `r3-r2`. La fonction `fcn.10000216` se charge de la copie en temps que tel. Puis la section boucle pour recuperer les 3 pointeurs suivants jusqu'a ce qu'un \0 indique la fin du tableau de pointeurs a copier. Nous noterons egalement que les sections scratch_x et scratch_y sont vides (r2 et r3 etant egaux).  
+
+```
+0x10000212  ldm   r1!, {r0}  <-|
+0x10000214  stm   r2!, {r0}    |
+0x10000216  cmp   r2, r3       |
+0x10000218  blo   0x10000212  -|
+0x1000021a  bx    lr
+```
 
 Une fois la copie de ces sections effectués, le code efface la section bss de `0x20001110` à `0x2000b00c`. Le code charge alors un pointeur vers la fonction situé en `0x10000268` et saute dedans. Selon GDB nous n'en retournerons jamais, et nous allons comprendre pourquoi en suivant le code. 
