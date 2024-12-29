@@ -68,3 +68,58 @@ Les trois premiers elements du tableau sont chargés dans les registres r1, r2, 
 ```
 
 Une fois la copie de ces sections effectués, le code efface la section bss de `0x20001110` à `0x2000b00c`. Le code charge alors un pointeur vers la fonction situé en `0x10000268` et saute dedans. Selon GDB nous n'en retournerons jamais, et nous allons comprendre pourquoi en suivant le code. 
+
+### Derniere ligne droite ?
+
+```
+fcn.100002cc(int32_t arg_344h);
+; arg int32_t arg_344h @ stack + 0x344
+0x100002cc  ldr   r3, [0x10000328]
+0x100002ce  cmp   r3, 0
+0x100002d0  bne   0x100002d4
+0x100002d2  ldr   r3, [0x10000324]
+0x100002d4  mov   sp, r3
+0x100002d6  movs  r2, 0x40   ; '@'
+0x100002d8  lsls  r2, r2, 0xa
+0x100002da  subs  r2, r3, r2
+0x100002dc  mov   sl, r2
+0x100002de  movs  r1, 0
+0x100002e0  mov   fp, r1
+0x100002e2  mov   r7, r1
+0x100002e4  ldr   r0, [0x10000334]
+0x100002e6  ldr   r2, [0x10000338]
+0x100002e8  subs  r2, r2, r0
+0x100002ea  bl    fcn.10011918 ; fcn.10011918
+0x100002ee  ldr   r3, [0x1000032c]
+0x100002f0  cmp   r3, 0
+0x100002f2  beq   0x100002f6
+0x100002f4  blx   r3
+0x100002f6  ldr   r3, [0x10000330]
+0x100002f8  cmp   r3, 0
+0x100002fa  beq   0x100002fe
+0x100002fc  blx   r3
+0x100002fe  movs  r0, 0
+0x10000300  movs  r1, 0
+0x10000302  movs  r4, r0
+0x10000304  movs  r5, r1
+0x10000306  ldr   r0, [aav.aav.0x1000d3cb] ; 0x1000033c
+0x10000308  cmp   r0, 0
+0x1000030a  beq   0x10000312
+0x1000030c  ldr   r0, [0x10000340]
+0x1000030e  bl    fcn.1000d3ca ; fcn.1000d3ca
+0x10000312  bl    fcn.1001101c ; fcn.1001101c
+0x10000316  movs  r0, r4
+0x10000318  movs  r1, r5
+0x1000031a  bl    fcn.10009770 ; fcn.10009770
+0x1000031e  bl    fcn.1000d3c4 ; fcn.1000d3c4
+0x10000322  mov   r8, r8
+0x10000324  .dword 0x00080000
+0x10000328  .dword 0x20040000
+0x1000032c  .dword 0x00000000
+0x10000330  .dword 0x100096d1 ; fcn.100096d0
+0x10000334  .dword 0x20001110
+0x10000338  .dword 0x2000b00c
+0x1000033c  .dword 0x1000d3cb ; fcn.1000d3ca
+0x1000033e  .dword 0x00001000
+0x10000340  .dword 0x00000000
+```
