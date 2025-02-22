@@ -125,6 +125,6 @@ fcn.100002cc(int32_t arg_344h);
 0x10000340  .dword 0x00000000
 ```
 
-Nous voici donc arrivé dans la dernière fonction qui sera appelé par le reset vector, nous ne retournerons pas de cette dernière non plus. Nous pourrions être tenté de penser que c'est parceque la boucle infinie de l'utilisateur se touve a la fin lors de l'appel de la fonction `fcn.10009770`, mais il y a un twist. 
+Nous voici donc arrivé dans la dernière fonction qui sera appelé par le reset vector, nous ne retournerons pas de cette dernière non plus. Nous pourrions être tenté de penser que c'est parceque la boucle infinie de l'utilisateur se touve a la fin lors de l'appel de la fonction `fcn.10009770`, mais il y a un twist. En réalite ce n'est pas le main qui ne rends jamais la main: c'est l'ordonanceur.  
 
 Commencons par lire notre code de manière sequentielle. La première des choses faite est l'initialisation de la stack et du frame pointer. Puis nous appellons la fonction `fcn.10011918` qui est en fait un memset qui initalise une partie de la mémoire a 0. Nous allons ensuite charger un pointeur sur fonction et verifier si il n'est pas nul. Si il l'est nous passons a la suite, si il est non nul nous appelons la fonction. 
