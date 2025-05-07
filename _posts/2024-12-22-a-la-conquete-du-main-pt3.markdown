@@ -12,7 +12,9 @@ Ce billet est le quatrieme d'une suite d'articles concernant le dessassemblage d
 ### Un peu de théorie 
 
 La librairie arduino est basée sur un OS temps réel (RTOS), ARM Mbed. Dans le cadre d'un RTOS, le code est séparé en tache, et ces taches sont gérées par un ordonnanceur qui va choisir a interval régulier quelle tache lancer/continuer/arreter. Cet ordonnanceur tourne dans un mode dit privilegié, alors que les taches elles tournent dans un mode dit utilisateur. 
+
 Ces modes ne sont pas que des constructions logicielles, ils sont implémentés dans le processeur en lui meme (il y a par exemple en réalité deux registres stack pointer, un pour chaque mode!). On peut passer en mode utilisateur de maniere transparente depuis le mode privilegié, mais on ne peut plus repasser en mode privilegié de maniere transparente. On peut cependant trigger un appel systeme, ce dernier va faire sauter le processeur a l'addresse a laquelle se trouve le code censé etre privilegié (dans notre cas l'ordonnanceur). Ce dernier choisira de revenir là ou se situait l'appel systeme en mode utilisateur comme si rien ne s'etait passé ou bien de passer a un autre processus. 
+
 Il est également possible, et c'est monnaie courante pour un ordonnanceur de repasser de manière periodique en mode privilegié pour s'assurer qu'un processus ne monopolise pas le processeur. Dans le cadre d'ARM Mbed et donc par extension du SDK arduino pour la RP2040, la fonction main est en réalité un thread. Lors de la création d'un thread, l'ordonnanceur est donc appelé avec en parametre un pointeur vers la fonction executée par ce thread.   
 
 ### Reprenons 
