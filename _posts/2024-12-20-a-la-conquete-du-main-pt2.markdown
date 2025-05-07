@@ -90,11 +90,11 @@ fcn.100002cc(int32_t arg_344h);
 0x100002e6  ldr   r2, [0x10000338]
 0x100002e8  subs  r2, r2, r0
 0x100002ea  bl    fcn.10011918 ; memset
-0x100002ee  ldr   r3, [0x1000032c]
+0x100002ee  ldr   r3, [0x1000032c] ; null ptr
 0x100002f0  cmp   r3, 0
 0x100002f2  beq   0x100002f6
 0x100002f4  blx   r3
-0x100002f6  ldr   r3, [0x10000330]
+0x100002f6  ldr   r3, [0x10000330] ; pointeur valant  0x100096d1
 0x100002f8  cmp   r3, 0
 0x100002fa  beq   0x100002fe
 0x100002fc  blx   r3
@@ -129,4 +129,85 @@ Nous voici donc arrivé dans la dernière fonction qui sera appelé par le reset
 
 Commencons par lire notre code de manière sequentielle. La première des choses faite est l'initialisation de la stack et du frame pointer. Puis nous appellons la fonction `fcn.10011918` qui est en fait un memset qui initalise une partie de la mémoire a 0. Nous allons ensuite charger un pointeur sur fonction et verifier si il n'est pas nul. Si il l'est nous passons a la suite, si il est non nul nous appelons la fonction. 
 
-//TO DO: continuer l'article lolilol
+Le premier pointeur sur fonction est nul, mais le second nous envoie en 0x100096d1 
+
+```
+0x100096d0      ldr     r2, [0x100096f8]
+0x100096d2      ldr     r3, [0x100096fc]
+0x100096d4      push    {r4, lr}
+0x100096d6      str     r2, [r3]
+0x100096d8      ldr     r3, [0x10009700]
+0x100096da      subs    r3, r3, r2
+0x100096dc      ldr     r2, [0x10009704]
+0x100096de      str     r3, [r2]
+0x100096e0      ldr     r2, [0x10009708]
+0x100096e2      ldr     r3, [0x1000970c]
+0x100096e4      str     r2, [r3]
+0x100096e6      ldr     r3, [0x10009710]
+0x100096e8      subs    r3, r3, r2
+0x100096ea      ldr     r2, [0x10009714]
+0x100096ec      str     r3, [r2]
+0x100096ee      bl      fcn.1000979c ; fcn.1000979c
+0x100096f2      bl      fcn.100097d0 ; fcn.100097d0
+0x100096f6      mov     r8, r8
+0x100096f8      .dword 0x2003fc00
+0x100096fc      .dword 0x20002a74
+0x10009700      .dword 0x20040000
+0x10009704      .dword 0x20002a70
+0x10009708      .dword 0x2000b00c
+0x1000970c      .dword 0x20002a68
+0x10009710      .dword 0x2003fc00
+0x10009714      .dword 0x20002a64
+``` 
+
+La routine dans laquelle nous venons d'atterir joue avec des addresses en RAM (0x2XXXXXXX), passons cette etape et interessons nous a la dernière fonction qui est appelée : fcn.100097d0 
+
+
+```
+fcn.100097d0();
+; var int32_t var_10h @ stack - 0x10
+0x100097d0      push    {r0, r1, r4, lr}
+0x100097d2      ldr     r3, [0x10009818]
+0x100097d4      ldr     r4, [0x1000981c]
+0x100097d6      movs    r1, 0
+0x100097d8      str     r3, [r4, 0x10]
+0x100097da      movs    r3, 0x80
+0x100097dc      lsls    r3, r3, 8
+0x100097de      str     r3, [r4, 0x14]
+0x100097e0      movs    r3, 0x44   ; 'D'
+0x100097e2      str     r3, [r4, 0xc]
+0x100097e4      ldr     r3, [0x10009820]
+0x100097e6      movs    r2, r4
+0x100097e8      str     r3, [r4, 8]
+0x100097ea      movs    r3, 0x18
+0x100097ec      str     r3, [r4, 0x18]
+0x100097ee      ldr     r3, [str.main] ; 0x10018e33
+0x100097f0      ldr     r0, [aav.aav.0x100097ad]
+0x100097f2      str     r3, [r4]
+0x100097f4      bl      fcn.1000949c ; fcn.1000949c
+0x100097f8      subs    r3, r0, 0
+0x100097fa      bne     0x10009808
+0x100097fc      movs    r2, r4
+0x100097fe      ldr     r1, [str.Pre_main_thread_not_created] ; 0x10018e38
+0x10009800      str     r0, [sp]
+0x10009802      ldr     r0, [0x10009830] ; int16_t arg2
+0x10009804      bl      fcn.1000d1a0 ; fcn.1000d1a0
+0x10009808      bl      fcn.10007d98 ; fcn.10007d98
+0x1000980c      movs    r2, 0
+0x1000980e      ldr     r1, [str.Failed_to_start_RTOS] ; 0x10018e54
+0x10009810      movs    r3, r2
+0x10009812      str     r2, [sp]
+0x10009814      b       0x10009802
+0x10009816      mov     r8, r8
+0x10009818      .dword 0x20002f78
+0x1000981c      .dword 0x20002f4c
+0x1000981e      movs    r0, 0
+0x10009820      .dword 0x20002e04
+0x10009824      .dword 0x10018e33
+0x10009828      .dword 0x100097ad ; fcn.100097ac
+0x1000982c      .dword 0x10018e38 ; aav.0x10018e38 ; str.Pre_main_thread_not_created
+0x10009830      .dword 0x8001011d
+0x10009834      .dword 0x10018e54 ; aav.0x10018e54 ; str.Failed_to_start_RTOS
+```
+
+Voilà qui est très interessant ! 
